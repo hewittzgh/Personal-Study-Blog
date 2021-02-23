@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>A Blog of Gonghao Zhang</title>
+    <description>Personal computer knowledge base</description>
+    <link>//</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 23 Feb 2021 11:17:19 +0800</pubDate>
+    <lastBuildDate>Tue, 23 Feb 2021 11:17:19 +0800</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Knowledge Points of Third Party Tools</title>
+        <description>&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema&lt;/code&gt; is a third party tool to recode and share your terminal sessions on the web. You can enjoy a lightweight, purely text-based approach to terminal recording. &lt;a href=&quot;https://asciinema.org&quot;&gt;Here&lt;/a&gt; is the asciinema official website.&lt;/p&gt;
+
+&lt;h1 id=&quot;how-to-install&quot;&gt;How to Install&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;There are several ways to get asciinema recorder, but in this blog only how to install via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt;, other ways can check official docs: &lt;a href=&quot;https://asciinema.org/docs/installation&quot;&gt;Here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;installing-via-pip&quot;&gt;Installing via Pip&lt;/h2&gt;
+&lt;p&gt;asciinema is available on PyPI and can be installed with pip(Python3 required):&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Install asciinema for $USER&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--user&lt;/span&gt; asciinema
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is the universal installation method for all operating systems, which always provides the latest version.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If the warning of “asciinema needs an ASCII or UTF-8 character encoding to run. Check the output of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;locale&lt;/code&gt; command” after you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ asciinema&lt;/code&gt;, then you can run command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export LC_CTYPE=&quot;en_US.UTF-8&quot;&lt;/code&gt;. The solution is from &lt;a href=&quot;https://github.com/asciinema/asciinema/issues/160&quot;&gt;issue#160&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;how-to-use&quot;&gt;How to Use&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;asciinema is composed of multiple commands, similar to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew&lt;/code&gt;.&lt;br /&gt;
+When you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ asciinema&lt;/code&gt; with no arguments help messahe is displayed, listing all available commands with their options.&lt;/p&gt;
+&lt;h2 id=&quot;asciinema-rec-filename--recode-terminal-session&quot;&gt;asciinema rec [filename] : Recode terminal session&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;By running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema rec [filename]&lt;/code&gt; you start a new recording session.
+    &lt;ul&gt;
+      &lt;li&gt;If the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filename&lt;/code&gt; argument is omitted then (after asking for comfirmation) the resulting recording (called asciicast) is uploaded to asciinema-server (by default to &lt;a href=&quot;https://asciinema.org&quot;&gt;asciinema.org&lt;/a&gt;, you can set the server address yourself) where it can be watched and shared.&lt;/li&gt;
+      &lt;li&gt;If the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filename&lt;/code&gt; argument is given then the asciicast is saved to a local file. It can later be uploaded to asciinema server with command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema upload &amp;lt;filename&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;By ending the shell(hit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt; or type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exit&lt;/code&gt;) you stop the recording.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The command(process) that is recorded can be specified with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-c&lt;/code&gt; option, and defaults to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ HELL&lt;/code&gt; which is what you want in most cases. If the recorded process is not a shell then recording finished when the process exits.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;available-options&quot;&gt;Available options:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;–stdin :Enable stdin(keyboard) recording
+    &lt;blockquote&gt;
+      &lt;p&gt;Stdin recording allows for capturing of all characters typed in by the user in the currently recorded shell.This may be used by a player (e.g. &lt;a href=&quot;https://github.com/asciinema/asciinema-player&quot;&gt;asciinema-player&lt;/a&gt;) to display pressed keys. It’s disabled by default, and has to be explicitly enabled via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--stdin&lt;/code&gt; option.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;–append :Append to existing recording&lt;/li&gt;
+  &lt;li&gt;–raw :Save raw STDOUT output, without timing information or other metadata&lt;/li&gt;
+  &lt;li&gt;–overwrite :Overwrite the recording if it already exists&lt;/li&gt;
+  &lt;li&gt;-c,–command=&lt;command /&gt; :Specify command to record, defaults to $SHELL&lt;/li&gt;
+  &lt;li&gt;-e,–env=&lt;var-names&gt; :List of environment variables to capture, defaults to SHELL,TERM&lt;/var-names&gt;&lt;/li&gt;
+  &lt;li&gt;-t,–title=&lt;title&gt; :Specify the title of the asciicast&lt;/title&gt;&lt;/li&gt;
+  &lt;li&gt;-i,–idle-time-limit=&lt;sec&gt; :Limit recorded terminal inactivity to max &lt;sec&gt; seconds&lt;/sec&gt;&lt;/sec&gt;&lt;/li&gt;
+  &lt;li&gt;-y,–yes :Answer “yes” to all prompts(e.g. upload confirmation)&lt;/li&gt;
+  &lt;li&gt;-q,–quiet :Be quiet, suppress all notices/warnings(implies -y)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;asciinema-play-filename--replay-recorded-asciicast-in-a-terminal&quot;&gt;asciinema play [filename] : Replay recorded asciicast in a terminal&lt;/h2&gt;
+&lt;p&gt;This command replayed given asciicast (as recorded by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rec&lt;/code&gt; command) directly in your terminal.&lt;br /&gt;
+It replays the recorded session using timing information saved in the asciicast.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Playing from a local file
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asciinema play /path/to/asciicast.cast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Playing from HTTP(S) URL
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asciinema play https://asciinema.org/a/22124.cast
+asciinema play http://example.com/demo.cast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Playing from asciinema page URL
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asciinema play https://ascinema.org/a/21124
+asciinema play http://example.com/blog/post.html 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;requires &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;link rel=&quot;alternate&quot; type=&quot;/application/x-asciicast&quot; href=&quot;/my/ascii.cast&quot;&amp;gt;&lt;/code&gt; in page’s HTML&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Playing from stdin
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /path/to/asciicast.cast | asciinema play -
+ssh user@host &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;asciicast.cast | asciinema play -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Playing from IPFS
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asciinema play dweb:/ipfs/QmNe7FsYaHc9SaDEAEXbaagAzNw9cH7YbzN4xV7jV1MCzK/ascii.cast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;available-options-1&quot;&gt;Available options:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;-i,–idle-time-limit=&lt;sec&gt; -Limit replayed terminal inactivity to max &lt;sec&gt; seconds&lt;/sec&gt;&lt;/sec&gt;&lt;/li&gt;
+  &lt;li&gt;-s,–speed=&lt;factor&gt; -Playback speed (can be fractional)&lt;/factor&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Tip: For the best playback experience it is recommended to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema play&lt;/code&gt; in a terminal of dimensions not smaller than the one used for recording, as there’s no “transcoding” of control sequences for new terminal size.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;available-keyboard-shortcuts&quot;&gt;Available Keyboard shortcuts&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Space&lt;/code&gt; -toggle pause&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; - step through a recording a frame at a time (when paused)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+c&lt;/code&gt; -exit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;asciinema-cat-filename--print-full-output-of-recorded-asciicast-to-a-terminal&quot;&gt;asciinema cat [filename] : Print full output of recorded asciicast to a terminal&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema cat existing.cast &amp;gt;output.txt&lt;/code&gt; gives the same result as recording via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema rec --raw output.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;asciinema-upload-filename--upload-recorded-asciicast-to-asciinemaorg-site&quot;&gt;asciinema upload [filename] : Upload recorded asciicast to asciinema.org site&lt;/h2&gt;
+&lt;p&gt;This command uploads given asciicast (recorded by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rec&lt;/code&gt; command) to asciinema.org, where it can be watched and shared.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema rec demo.cast&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema play demo.cast&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema upload demo.cast&lt;/code&gt; is a nice combo if you want to review an asciicast before publishing it on asciinema.org.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;asciinema-auth--link-your-install-id-with-your-asciinemaorg-user-account&quot;&gt;asciinema auth : Link your install ID with your asciinema.org user account&lt;/h2&gt;
+&lt;p&gt;To manage your recordings (change title/theme, delete) via command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asciinema auth&lt;/code&gt;.&lt;br /&gt;
+This command displays the URL to open in a web browser to do that. You may be asked to log in first.&lt;br /&gt;
+Install ID is a random ID (UUID v4) generated locally when you run asciinema for the first time, and saved at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.config/asciinema/install-id&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Tip: A new install ID is generated on each machine and system user account you use asciinema on, so in order to keep all recordings under a single asciinema.org account you need to run asciinema auth on all of those machines.&lt;br /&gt;
+Tip: asciinema versions prior to 2.0 confusingly referred to install ID as “API token”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;configuration-file&quot;&gt;Configuration file&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;You can configure asciinema by creating config file at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.config/asciinema/config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-structure-of-the-configuratin-file&quot;&gt;The structure of the configuratin file&lt;/h2&gt;
+
+&lt;p&gt;Configuration is split into sections : [api], [record], [play].&lt;/p&gt;
+
+&lt;h3 id=&quot;api-section&quot;&gt;[api] section&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;url = ___
+    &lt;ul&gt;
+      &lt;li&gt;API server URL, default: https://asciinema.org.&lt;/li&gt;
+      &lt;li&gt;If you run your own instance of asciinema-server then set its address here.&lt;/li&gt;
+      &lt;li&gt;It can also be overriden by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASCIINEMA_API_URL&lt;/code&gt; environment variable.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;record-section&quot;&gt;[record] section&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;command = ___
+    &lt;ul&gt;
+      &lt;li&gt;Command to record, default: $SHELL&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;stdin = ___
+    &lt;ul&gt;
+      &lt;li&gt;Enable stdin (keyboard) recording, default: no&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;env = ___
+    &lt;ul&gt;
+      &lt;li&gt;List of environment variables to capture, default: SHELL,TERM&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;idle_time_limit = ___
+    &lt;ul&gt;
+      &lt;li&gt;Limit recorded terminal inactivity to max n seconds, default: off&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;yes = ___
+    &lt;ul&gt;
+      &lt;li&gt;Answer “yes” to all interactive prompts, default: no&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;quiet = ___
+    &lt;ul&gt;
+      &lt;li&gt;Be quiet, suppress all notices/warnings, default: no&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;play-section&quot;&gt;[play] section&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;speed = ___
+    &lt;ul&gt;
+      &lt;li&gt;Playback speed (can be fractional), default: 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;idle_time_limit = ___
+    &lt;ul&gt;
+      &lt;li&gt;Limit replayed terminal inactivity to max n seconds, default: off&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Configuration Example&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[api]
+url = https://asciinema.example.com
+[record]
+command = /bin/bash -l
+stdin = yes
+env = SHELL,TERM,USER
+idle_time_limit = 2
+yes = true
+quiet = true
+[play]
+speed = 2
+idle_time_limit = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Config directory location can be changed by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ASCIINEMA_CONFIG_HOME&lt;/code&gt; environment variable.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$XDG_CONFIG_HOME&lt;/code&gt; is set on Linux then asciinema uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$XDG_CONFIG_HOME/asciinema&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.config/asciinema&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;asciinema versions prior to 1.1 used &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.asciinema&lt;/code&gt;. If you have it there you should &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mv $HOME/.asciinema $HOME/.config/asciinema&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2021 00:00:00 +0800</pubDate>
+        <link>/2021/02/22/Third-Party-Tools-1.html</link>
+        <guid isPermaLink="true">/2021/02/22/Third-Party-Tools-1.html</guid>
+        
+        <category>Third-Party-Tools</category>
+        
+        <category>asciinema</category>
+        
+        
+        <category>Third</category>
+        
+        <category>Party</category>
+        
+        <category>Tools</category>
+        
+      </item>
+    
+      <item>
+        <title>Knowledge Points of Python</title>
+        <description>&lt;h1 id=&quot;the-difference-between-command--sudo-pip-install-and-command--pip-install---user&quot;&gt;The difference between command: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ sudo pip install&lt;/code&gt; and command: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ pip install --user&lt;/code&gt;&lt;/h1&gt;
+
+</description>
+        <pubDate>Mon, 22 Feb 2021 00:00:00 +0800</pubDate>
+        <link>/2021/02/22/Python-1.html</link>
+        <guid isPermaLink="true">/2021/02/22/Python-1.html</guid>
+        
+        <category>pip</category>
+        
+        <category>sudo</category>
+        
+        
+        <category>Python</category>
+        
+      </item>
+    
+  </channel>
+</rss>
