@@ -8,8 +8,8 @@ url: '' # your host
 # if you're using GitHub Pages, set baseurl to your blog's .
 # for example, if your site is "kaeyleo.github.io", then this url should leave blank.
 # but if your created a repo named "myblog", and the site is "kaeyleo.github.io/myblog", change baseurl to '/myblog'
-baseurl: ''
-# baseurl: '/Personal-Study-Blog' 
+# baseurl: ''
+baseurl: '/Personal-Study-Blog'
 # Navigation links
 nav:
   home: '/'
